@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { toast, ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+
 
 export default function SimpleLogin() {
   const [token, setToken] = useState('')
@@ -27,7 +27,7 @@ export default function SimpleLogin() {
     }
 
     try {
-      const res = await fetch('https://ai.bmspcustomer.net/webhook/64aac637-3795-4932-b466-1cbc13a0ebd4', {
+      const res = await fetch(process.env.NEXT_PUBLIC_LOGIN_URL, {
         method: 'GET',
         headers: {
           'api-key': trimmedToken
