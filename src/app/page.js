@@ -1,10 +1,10 @@
 import React from 'react'
-import SimpleLogin from './component/auth/login/simplelogin'
+import LoginForm from './components/auth/LoginForm'
 
 function page() {
   return (
     <div >
-      <SimpleLogin />
+      <LoginForm />
     </div>
   )
 }

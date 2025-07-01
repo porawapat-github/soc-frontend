@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { toast, ToastContainer } from 'react-toastify'
 
 
-export default function SimpleLogin() {
+export default function LoginForm() {
   const [token, setToken] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
