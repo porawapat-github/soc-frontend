@@ -99,17 +99,17 @@ function MainMenu() {
                 <FaUser className="text-white text-xl" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-white">Main Dashboard</h1>
+                <h1 className="text-2xl font-bold text-white">Dashboard Menu</h1>
                 <p className="text-red-400 text-sm">ยินดีต้อนรับเข้าสู่ระบบ</p>
               </div>
             </div>
-            
+
             <div className="flex items-center space-x-4">
               <div className="text-right">
                 <p className="text-white text-sm">{currentTime.toLocaleDateString('th-TH')}</p>
                 <p className="text-red-400 text-xs">{currentTime.toLocaleTimeString('th-TH')}</p>
               </div>
-              
+
               <button
                 onClick={handleLogout}
                 className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-all duration-300 flex items-center space-x-2 hover:scale-105"
@@ -134,7 +134,7 @@ function MainMenu() {
 
         {/* Menu Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {/* เมนู 1 - แมวน่ารัก */}
+          {/* Excel */}
           <div className="group">
             <div className="bg-gradient-to-br from-gray-900 to-black border border-red-600/50 rounded-2xl p-8 shadow-2xl shadow-red-600/20 transform transition-all duration-500 hover:scale-105 hover:shadow-red-600/40 hover:border-red-500">
               <div className="flex flex-col items-center text-center space-y-6">
@@ -146,18 +146,24 @@ function MainMenu() {
                     NEW
                   </div>
                 </div>
-                
+
                 <div>
-                  <h3 className="text-2xl font-bold text-white mb-2">เมนูแมวน่ารัก</h3>
-                  <p className="text-gray-400 mb-6">ข้อมูลแมวจะมาเร็ว ๆ นี้ 🐾</p>
+                  <h3 className="text-2xl font-bold text-white mb-2">Excel</h3>
+                  <p className="text-gray-400 mb-6">ข้อมูล Excel</p>
                 </div>
 
                 <button
-                  onClick={() => handleClick('เมนูแมวน่ารัก')}
+                  onClick={() => {
+                    const token = localStorage.getItem('api-token')
+                    if (token) {
+                      window.open(`http://localhost:3001/?token=${token}`, '_blank')
+                    }
+                  }}
                   className="w-full bg-gradient-to-r from-pink-600 to-red-600 hover:from-pink-700 hover:to-red-700 text-white font-bold py-3 px-6 rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-lg"
                 >
-                  🐱 ส่งเมี๊ยว~
+                  ตรวจสอบข้อมูล
                 </button>
+
               </div>
             </div>
           </div>
@@ -174,7 +180,7 @@ function MainMenu() {
                     SOON
                   </div>
                 </div>
-                
+
                 <div>
                   <h3 className="text-2xl font-bold text-white mb-2">เมนูเกมสนุก</h3>
                   <p className="text-gray-400 mb-6">เกมสนุกกำลังจะมา 🎮</p>
@@ -199,7 +205,7 @@ function MainMenu() {
                     <FaCog className="text-4xl text-white animate-spin-slow" />
                   </div>
                 </div>
-                
+
                 <div>
                   <h3 className="text-2xl font-bold text-white mb-2">การตั้งค่า</h3>
                   <p className="text-gray-400 mb-6">จัดการระบบและการตั้งค่า ⚙️</p>
@@ -222,12 +228,12 @@ function MainMenu() {
             <div className="text-3xl font-bold text-red-400">24/7</div>
             <div className="text-gray-300">ระบบพร้อมใช้งาน</div>
           </div>
-          
+
           <div className="bg-gradient-to-r from-gray-900/50 to-red-900/50 backdrop-blur-sm border border-red-600/30 rounded-xl p-6 text-center">
             <div className="text-3xl font-bold text-red-400">🔒</div>
             <div className="text-gray-300">ความปลอดภัยสูง</div>
           </div>
-          
+
           <div className="bg-gradient-to-r from-gray-900/50 to-red-900/50 backdrop-blur-sm border border-red-600/30 rounded-xl p-6 text-center">
             <div className="text-3xl font-bold text-red-400">⚡</div>
             <div className="text-gray-300">ประสิทธิภาพสูง</div>
@@ -235,8 +241,8 @@ function MainMenu() {
         </div>
       </main>
 
-      <ToastContainer 
-        position="top-center" 
+      <ToastContainer
+        position="top-center"
         autoClose={2500}
         theme="dark"
         toastStyle={{
