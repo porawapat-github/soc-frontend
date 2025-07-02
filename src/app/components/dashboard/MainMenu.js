@@ -3,8 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { toast, ToastContainer } from 'react-toastify'
-
-import { FaCat, FaGamepad, FaSignOutAlt, FaUser, FaCog } from 'react-icons/fa'
+import Image from 'next/image'
 
 function MainMenu() {
   const router = useRouter()
@@ -55,10 +54,6 @@ function MainMenu() {
     return () => clearInterval(timer)
   }, [router])
 
-  const handleClick = (menuName) => {
-    toast.info(`คุณเลือก "${menuName}" 🚀`)
-  }
-
   const handleLogout = () => {
     localStorage.removeItem('api-token')
     toast.success('ออกจากระบบเรียบร้อย 👋')
@@ -67,10 +62,10 @@ function MainMenu() {
 
   if (isVerified === null) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-red-950 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-red-500 border-t-transparent mx-auto mb-4"></div>
-          <p className="text-white text-xl">🔒 กำลังตรวจสอบสิทธิ์...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-3 border-rose-500 border-t-transparent mx-auto mb-4"></div>
+          <p className="text-neutral-300 text-lg">กำลังตรวจสอบสิทธิ์...</p>
         </div>
       </div>
     )
@@ -81,41 +76,48 @@ function MainMenu() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-red-950 relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-10 w-40 h-40 bg-red-600 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-10 right-10 w-32 h-32 bg-red-800 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/3 right-1/4 w-24 h-24 bg-red-500 rounded-full blur-2xl animate-bounce"></div>
-        <div className="absolute bottom-1/3 left-1/4 w-28 h-28 bg-red-700 rounded-full blur-2xl animate-bounce delay-500"></div>
+    <div className="min-h-screen bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 relative overflow-hidden">
+      {/* Soft Background Elements */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-10 left-10 w-96 h-96 bg-rose-500 rounded-full blur-[150px]"></div>
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-red-500 rounded-full blur-[150px]"></div>
+      </div>
+
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="h-full w-full bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
       </div>
 
       {/* Header */}
-      <header className="relative z-10 bg-gradient-to-r from-gray-900/80 to-red-900/80 backdrop-blur-sm border-b border-red-600/30">
+      <header className="relative z-10 bg-neutral-800/50 backdrop-blur-xl border-b border-neutral-700">
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-4">
-              <div className="bg-gradient-to-r from-red-600 to-red-700 p-3 rounded-full">
-                <FaUser className="text-white text-xl" />
+              <div className="bg-gradient-to-br from-rose-500 to-red-600 p-2.5 rounded-xl">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                </svg>
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-white">Dashboard Menu</h1>
-                <p className="text-red-400 text-sm">ยินดีต้อนรับเข้าสู่ระบบ</p>
+                <h1 className="text-xl font-light text-white">Dashboard</h1>
+                <p className="text-neutral-400 text-sm">ระบบจัดการข้อมูล</p>
               </div>
             </div>
 
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-6">
               <div className="text-right">
-                <p className="text-white text-sm">{currentTime.toLocaleDateString('th-TH')}</p>
-                <p className="text-red-400 text-xs">{currentTime.toLocaleTimeString('th-TH')}</p>
+                <p className="text-neutral-300 text-sm">{currentTime.toLocaleDateString('th-TH', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                <p className="text-rose-500 text-xs">{currentTime.toLocaleTimeString('th-TH')}</p>
               </div>
 
               <button
                 onClick={handleLogout}
-                className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-all duration-300 flex items-center space-x-2 hover:scale-105"
+                className="bg-neutral-700/50 hover:bg-rose-500 text-neutral-300 hover:text-white px-4 py-2 rounded-xl transition-all duration-300 flex items-center space-x-2 border border-neutral-600 hover:border-neutral-500"
               >
-                <FaSignOutAlt />
-                <span>ออกจากระบบ</span>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                </svg>
+                <span className="text-sm">ออกจากระบบ</span>
               </button>
             </div>
           </div>
@@ -123,35 +125,48 @@ function MainMenu() {
       </header>
 
       {/* Main Content */}
-      <main className="relative z-10 container mx-auto px-6 py-12">
+      <main className="relative z-10 container mx-auto px-6 py-12"> 
         {/* Welcome Section */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-white mb-4">
-            🚀 <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">Dashboard Center</span>
+        <div className="mb-12">
+          <h2 className="text-3xl font-light text-white mb-2">
+            ยินดีต้อนรับ
           </h2>
-          <p className="text-gray-300 text-lg">เลือกเมนูที่ต้องการใช้งาน</p>
+          <p className="text-neutral-400">เลือกเครื่องมือที่ต้องการใช้งาน</p>
         </div>
 
         {/* Menu Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {/* Excel */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {/* Excel Card */}
           <div className="group">
-            <div className="bg-gradient-to-br from-gray-900 to-black border border-red-600/50 rounded-2xl p-8 shadow-2xl shadow-red-600/20 transform transition-all duration-500 hover:scale-105 hover:shadow-red-600/40 hover:border-red-500">
-              <div className="flex flex-col items-center text-center space-y-6">
-                <div className="relative">
-                  <div className="bg-gradient-to-r from-pink-500 to-red-500 p-6 rounded-full shadow-lg group-hover:shadow-pink-500/50 transition-all duration-300">
-                    <FaCat className="text-4xl text-white" />
-                  </div>
-                  <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full animate-pulse">
-                    NEW
+            <div className="bg-neutral-800/50 backdrop-blur-xl border border-neutral-700 rounded-2xl p-6 shadow-xl transform transition-all duration-300 hover:shadow-2xl hover:border-green-500 hover:-translate-y-1">
+              <div className="flex flex-col h-full">
+                {/* Icon Section */}
+                <div className="mb-6">
+                  <div className="relative inline-block">
+                    <div className="bg-gradient-to-br from-rose-500 to-red-600 p-4 rounded-xl shadow-lg">
+                      <Image 
+                        src="/images/logo/icons8-excel.svg" 
+                        alt="Excel Icon"
+                        width={40}
+                        height={40}
+                        className="w-10 h-10"
+                      />
+                    </div>
+                    <span className="absolute -top-2 -right-2 bg-rose-500 text-white text-xs px-2 py-0.5 rounded-full">
+                      New
+                    </span>
                   </div>
                 </div>
 
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-2">Excel</h3>
-                  <p className="text-gray-400 mb-6">ข้อมูล Excel</p>
+                {/* Content Section */}
+                <div className="flex-grow">
+                  <h3 className="text-xl font-light text-white mb-2">Excel Filter</h3>
+                  <p className="text-neutral-400 text-sm mb-6">
+                    ระบบกรองและจัดการข้อมูล Excel อัตโนมัติ
+                  </p>
                 </div>
 
+                {/* Action Button */}
                 <button
                   onClick={() => {
                     const token = localStorage.getItem('api-token')
@@ -159,84 +174,12 @@ function MainMenu() {
                       window.open(`http://localhost:3001/?token=${token}`, '_blank')
                     }
                   }}
-                  className="w-full bg-gradient-to-r from-pink-600 to-red-600 hover:from-pink-700 hover:to-red-700 text-white font-bold py-3 px-6 rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                  className="w-full bg-gradient-to-r from-rose-500 to-red-600 hover:from-rose-600 hover:to-red-700 text-white font-medium py-2.5 px-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:text-green-2 00 hover:shadow-green-500/25"
                 >
-                  ตรวจสอบข้อมูล
-                </button>
-
-              </div>
-            </div>
-          </div>
-
-          {/* เมนู 2 - เกมสนุก */}
-          <div className="group">
-            <div className="bg-gradient-to-br from-gray-900 to-black border border-red-600/50 rounded-2xl p-8 shadow-2xl shadow-red-600/20 transform transition-all duration-500 hover:scale-105 hover:shadow-red-600/40 hover:border-red-500">
-              <div className="flex flex-col items-center text-center space-y-6">
-                <div className="relative">
-                  <div className="bg-gradient-to-r from-purple-500 to-red-500 p-6 rounded-full shadow-lg group-hover:shadow-purple-500/50 transition-all duration-300">
-                    <FaGamepad className="text-4xl text-white" />
-                  </div>
-                  <div className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full animate-pulse">
-                    SOON
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-2">เมนูเกมสนุก</h3>
-                  <p className="text-gray-400 mb-6">เกมสนุกกำลังจะมา 🎮</p>
-                </div>
-
-                <button
-                  onClick={() => handleClick('เมนูเกมสนุก')}
-                  className="w-full bg-gradient-to-r from-purple-600 to-red-600 hover:from-purple-700 hover:to-red-700 text-white font-bold py-3 px-6 rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                >
-                  🎮 เริ่มเล่น!
+                  เปิดใช้งาน
                 </button>
               </div>
             </div>
-          </div>
-
-          {/* เมนู 3 - การตั้งค่า */}
-          <div className="group md:col-span-2 lg:col-span-1">
-            <div className="bg-gradient-to-br from-gray-900 to-black border border-red-600/50 rounded-2xl p-8 shadow-2xl shadow-red-600/20 transform transition-all duration-500 hover:scale-105 hover:shadow-red-600/40 hover:border-red-500">
-              <div className="flex flex-col items-center text-center space-y-6">
-                <div className="relative">
-                  <div className="bg-gradient-to-r from-gray-600 to-red-600 p-6 rounded-full shadow-lg group-hover:shadow-gray-500/50 transition-all duration-300">
-                    <FaCog className="text-4xl text-white animate-spin-slow" />
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-2">การตั้งค่า</h3>
-                  <p className="text-gray-400 mb-6">จัดการระบบและการตั้งค่า ⚙️</p>
-                </div>
-
-                <button
-                  onClick={() => handleClick('การตั้งค่า')}
-                  className="w-full bg-gradient-to-r from-gray-600 to-red-600 hover:from-gray-700 hover:to-red-700 text-white font-bold py-3 px-6 rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                >
-                  ⚙️ ตั้งค่า
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Stats Section */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-gradient-to-r from-gray-900/50 to-red-900/50 backdrop-blur-sm border border-red-600/30 rounded-xl p-6 text-center">
-            <div className="text-3xl font-bold text-red-400">24/7</div>
-            <div className="text-gray-300">ระบบพร้อมใช้งาน</div>
-          </div>
-
-          <div className="bg-gradient-to-r from-gray-900/50 to-red-900/50 backdrop-blur-sm border border-red-600/30 rounded-xl p-6 text-center">
-            <div className="text-3xl font-bold text-red-400">🔒</div>
-            <div className="text-gray-300">ความปลอดภัยสูง</div>
-          </div>
-
-          <div className="bg-gradient-to-r from-gray-900/50 to-red-900/50 backdrop-blur-sm border border-red-600/30 rounded-xl p-6 text-center">
-            <div className="text-3xl font-bold text-red-400">⚡</div>
-            <div className="text-gray-300">ประสิทธิภาพสูง</div>
           </div>
         </div>
       </main>
@@ -246,25 +189,11 @@ function MainMenu() {
         autoClose={2500}
         theme="dark"
         toastStyle={{
-          backgroundColor: '#1a1a1a',
+          backgroundColor: '#262626',
           color: '#fff',
-          border: '1px solid #dc2626'
+          border: '1px solid #404040'
         }}
       />
-
-      <style jsx>{`
-        @keyframes spin-slow {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-        .animate-spin-slow {
-          animation: spin-slow 3s linear infinite;
-        }
-      `}</style>
     </div>
   )
 }

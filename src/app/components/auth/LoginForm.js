@@ -21,7 +21,7 @@ export default function LoginForm() {
 
     const trimmedToken = token.trim()
     if (!trimmedToken || trimmedToken.length > 50) {
-      toast.warn('กรุณากรอก Token ที่ถูกต้อง (ไม่เกิน 50 ตัวอักษร)')
+      toast.warn('กรุณากรอก Token Login ')
       setIsLoading(false)
       return
     }
@@ -56,73 +56,126 @@ export default function LoginForm() {
   }
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-black via-gray-900 to-red-950 relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 left-20 w-32 h-32 bg-red-600 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-40 h-40 bg-red-800 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-red-500 rounded-full blur-2xl animate-bounce"></div>
+    <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 relative overflow-hidden">
+      {/* Soft Animated Background */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 left-20 w-64 h-64 bg-rose-500 rounded-full blur-[100px] animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-80 h-80 bg-red-500 rounded-full blur-[120px] animate-pulse delay-1000"></div>
       </div>
 
-      {/* Geometric Patterns */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-red-900 to-transparent transform rotate-45 scale-150"></div>
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-l from-transparent via-red-800 to-transparent transform -rotate-45 scale-150"></div>
+      {/* Floating Particles */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-rose-400 rounded-full animate-float"></div>
+        <div className="absolute top-3/4 left-1/3 w-3 h-3 bg-red-400 rounded-full animate-float-delayed"></div>
+        <div className="absolute top-1/2 right-1/4 w-2 h-2 bg-rose-300 rounded-full animate-float"></div>
+        <div className="absolute bottom-1/4 right-1/3 w-4 h-4 bg-red-300 rounded-full animate-float-delayed"></div>
+        <div className="absolute top-1/3 left-1/2 w-2 h-2 bg-rose-500 rounded-full animate-float-slow"></div>
       </div>
+
+      {/* Subtle Grid Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="h-full w-full bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+      </div>
+
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0) translateX(0); }
+          25% { transform: translateY(-20px) translateX(10px); }
+          50% { transform: translateY(-10px) translateX(-10px); }
+          75% { transform: translateY(-30px) translateX(5px); }
+        }
+        @keyframes float-delayed {
+          0%, 100% { transform: translateY(0) translateX(0); }
+          25% { transform: translateY(-30px) translateX(-10px); }
+          50% { transform: translateY(-20px) translateX(10px); }
+          75% { transform: translateY(-10px) translateX(-5px); }
+        }
+        @keyframes float-slow {
+          0%, 100% { transform: translateY(0) translateX(0); }
+          50% { transform: translateY(-40px) translateX(20px); }
+        }
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+          animation: float-delayed 8s ease-in-out infinite;
+        }
+        .animate-float-slow {
+          animation: float-slow 10s ease-in-out infinite;
+        }
+      `}</style>
 
       <ToastContainer 
         position="top-center" 
         autoClose={2500}
         theme="dark"
         toastStyle={{
-          backgroundColor: '#1a1a1a',
+          backgroundColor: '#262626',
           color: '#fff',
-          border: '1px solid #dc2626'
+          border: '1px solid #404040'
         }}
       />
 
       <div className="relative z-10 w-full max-w-md px-6">
         {/* Login Card */}
-        <div className="bg-gradient-to-br from-gray-900 to-black border border-red-600 shadow-2xl shadow-red-600/20 rounded-2xl overflow-hidden backdrop-blur-sm">
+        <div className="bg-neutral-800/50 backdrop-blur-xl border border-neutral-700 shadow-2xl rounded-3xl overflow-hidden transform transition-all duration-500 hover:scale-[1.02]">
           
           {/* Header Section */}
-          <div className="bg-gradient-to-r from-red-600 to-red-700 p-6 text-center">
-            <div className="flex justify-center mb-3">
-              <div className="bg-black rounded-full p-3 shadow-lg">
-                <svg className="w-8 h-8 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+          <div className="bg-gradient-to-r from-neutral-800 to-neutral-700 p-8 text-center border-b border-neutral-600">
+            <div className="flex justify-center mb-4">
+              <div className="bg-gradient-to-br from-rose-500 to-red-600 rounded-2xl p-4 shadow-xl transform transition-all duration-300 hover:rotate-12 hover:scale-110">
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
                 </svg>
               </div>
             </div>
-            <h1 className="text-2xl font-bold text-white mb-1">SECURE LOGIN</h1>
-            <p className="text-red-100 text-sm opacity-90">เข้าสู่ระบบด้วย Token</p>
+            <h1 className="text-2xl font-light text-white mb-2 animate-fade-in">เข้าสู่ระบบ</h1>
+            <p className="text-neutral-400 text-sm animate-fade-in-delayed">กรุณาใส่ Token เพื่อเข้าใช้งาน</p>
           </div>
+
+          <style>{`
+            @keyframes fade-in {
+              from { opacity: 0; transform: translateY(10px); }
+              to { opacity: 1; transform: translateY(0); }
+            }
+            @keyframes fade-in-delayed {
+              from { opacity: 0; transform: translateY(10px); }
+              to { opacity: 1; transform: translateY(0); }
+            }
+            .animate-fade-in {
+              animation: fade-in 0.8s ease-out;
+            }
+            .animate-fade-in-delayed {
+              animation: fade-in 0.8s ease-out 0.2s both;
+            }
+          `}</style>
 
           {/* Form Section */}
           <form onSubmit={handleSubmit} className="p-8">
             <div className="mb-6">
-              <label className="block text-red-400 text-sm font-medium mb-3">
-                🔑 Authentication Token
+              <label className="block text-neutral-300 text-sm font-light mb-3">
+                Token Login
               </label>
               <div className="relative">
                 <input
                   type="text"
-                  placeholder="กรอก Token ที่ได้รับ..."
+                  placeholder="กรอก Token Login"
                   value={token}
                   onChange={(e) => setToken(e.target.value)}
-                  className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all duration-300"
+                  className="w-full px-4 py-3 bg-neutral-700/50 border border-neutral-600 rounded-xl text-white placeholder-neutral-500 focus:outline-none focus:border-rose-500/50 focus:ring-2 focus:ring-rose-500/20 transition-all duration-300"
                   disabled={isLoading}
                 />
-                <div className="absolute inset-y-0 right-0 flex items-center pr-3">
-                  <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                <div className="absolute inset-y-0 right-0 flex items-center pr-4">
+                  <div className="w-2 h-2 bg-rose-500 rounded-full animate-pulse"></div>
                 </div>
               </div>
+              <p className="text-xs text-neutral-500 mt-2 animate-fade-in">💡 กรอก Token Login เพื่อความสมบรูณ์ของระบบ</p>
             </div>
 
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-3 px-6 rounded-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-red-600/30 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-2"
+              className="w-full bg-gradient-to-r from-rose-500 to-red-600 hover:from-rose-600 hover:to-red-700 text-white font-medium py-3 px-6 rounded-xl transform transition-all duration-300 hover:shadow-lg hover:shadow-rose-500/25 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-2"
             >
               {isLoading ? (
                 <>
@@ -130,39 +183,13 @@ export default function LoginForm() {
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
-                  <span>กำลังเข้าสู่ระบบ...</span>
+                  <span>กำลังเข้าสู่ระบบ</span>
                 </>
               ) : (
-                <>
-                  <span>🚀 LOGIN</span>
-                </>
+                <span>เข้าสู่ระบบ</span>
               )}
             </button>
-
-            {/* Security Notice */}
-            <div className="mt-6 p-4 bg-gray-800/50 border border-gray-700 rounded-lg">
-              <div className="flex items-start space-x-3">
-                <div className="flex-shrink-0">
-                  <svg className="w-5 h-5 text-yellow-500 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-300">
-                    <span className="text-yellow-500 font-medium">ข้อมูลความปลอดภัย:</span> Token ของคุณจะถูกเข้ารหัสและจัดเก็บอย่างปลอดภัย
-                  </p>
-                </div>
-              </div>
-            </div>
           </form>
-
-          {/* Footer Decoration */}
-          <div className="h-1 bg-gradient-to-r from-red-600 via-red-500 to-red-600"></div>
-        </div>
-
-        {/* Additional Info */}
-        <div className="text-center mt-6 text-gray-400 text-sm">
-          <p>🔒 ระบบรักษาความปลอดภัยขั้นสูง</p>
         </div>
       </div>
     </div>
