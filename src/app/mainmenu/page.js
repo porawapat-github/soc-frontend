@@ -1,6 +1,5 @@
 'use client'
-
-import MainMenu from "../component/mainmenu/mainmenu"
+import MainMenu from "../components/dashboard/MainMenu"
 
 
 export default function MainMenuPage() {
