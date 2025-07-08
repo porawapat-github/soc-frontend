@@ -99,7 +99,7 @@ function MainMenu() {
                 </svg>
               </div>
               <div>
-                <h1 className="text-xl font-light text-white">Dashboard</h1>
+                <h1 className="text-xl font-light text-white">Dashboard Menu</h1>
                 <p className="text-neutral-400 text-sm">ระบบจัดการข้อมูล</p>
               </div>
             </div>
