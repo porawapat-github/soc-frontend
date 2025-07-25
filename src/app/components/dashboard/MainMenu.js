@@ -125,8 +125,9 @@ function MainMenu() {
       </header>
 
       {/* Main Content */}
-      <main className="relative z-10 container mx-auto px-6 py-12"> 
+      <main className="relative z-10 container mx-auto px-6 py-12 ">
         {/* Welcome Section */}
+
         <div className="mb-12">
           <h2 className="text-3xl font-light text-white mb-2">
             ยินดีต้อนรับ
@@ -134,50 +135,98 @@ function MainMenu() {
           <p className="text-neutral-400">เลือกเครื่องมือที่ต้องการใช้งาน</p>
         </div>
 
-        {/* Menu Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {/* Excel Card */}
-          <div className="group">
-            <div className="bg-neutral-800/50 backdrop-blur-xl border border-neutral-700 rounded-2xl p-6 shadow-xl transform transition-all duration-300 hover:shadow-2xl hover:border-green-500 hover:-translate-y-1">
-              <div className="flex flex-col h-full">
-                {/* Icon Section */}
-                <div className="mb-6">
-                  <div className="relative inline-block">
-                    <div className="bg-gradient-to-br from-rose-500 to-red-600 p-4 rounded-xl shadow-lg">
-                      <Image 
-                        src="/images/logo/icons8-excel.svg" 
-                        alt="Excel Icon"
-                        width={40}
-                        height={40}
-                        className="w-10 h-10"
-                      />
+        <div className="max-w-10xl">
+          {/* Single Row Layout for Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {/* Excel Card 1 */}
+            <div className="group">
+              <div className="bg-neutral-800/50 backdrop-blur-xl border border-neutral-700 rounded-2xl p-4 shadow-xl transform transition-all duration-300 hover:shadow-2xl hover:border-green-500 hover:-translate-y-1">
+                <div className="flex flex-col h-full">
+                  {/* Icon Section */}
+                  <div className="mb-4">
+                    <div className="relative inline-block">
+                      <div className="bg-gradient-to-br from-rose-500 to-red-600 p-3 rounded-xl shadow-lg">
+                        <Image
+                          src="/images/logo/icons8-excel.svg"
+                          alt="Excel Icon"
+                          width={32}
+                          height={32}
+                          className="w-8 h-8"
+                        />
+                      </div>
+                      <span className="absolute -top-2 -right-2 bg-rose-500 text-white text-xs px-2 py-0.5 rounded-full">
+                        New
+                      </span>
                     </div>
-                    <span className="absolute -top-2 -right-2 bg-rose-500 text-white text-xs px-2 py-0.5 rounded-full">
-                      New
-                    </span>
                   </div>
-                </div>
 
-                {/* Content Section */}
-                <div className="flex-grow">
-                  <h3 className="text-xl font-light text-white mb-2">Excel Filter</h3>
-                  <p className="text-neutral-400 text-sm mb-6">
-                    ระบบกรองและจัดการข้อมูล Excel อัตโนมัติ
-                  </p>
-                </div>
+                  {/* Content Section */}
+                  <div className="flex-grow">
+                    <h3 className="text-lg font-light text-white mb-2">Excel Filter</h3>
+                    <p className="text-neutral-400 text-sm mb-4">
+                      ระบบกรองและจัดการข้อมูล Excel อัตโนมัติ
+                    </p>
+                  </div>
 
-                {/* Action Button */}
-                <button
-                  onClick={() => {
-                    const token = localStorage.getItem('api-token')
-                    if (token) {
-                      window.open(`http://localhost:3001/?token=${token}`, '_blank')
-                    }
-                  }}
-                  className="w-full bg-gradient-to-r from-rose-500 to-red-600 hover:from-rose-600 hover:to-red-700 text-white font-medium py-2.5 px-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:text-green-2 00 hover:shadow-green-500/25"
-                >
-                  เปิดใช้งาน
-                </button>
+                  {/* Action Button */}
+                  <button
+                    onClick={() => {
+                      const token = localStorage.getItem('api-token')
+                      if (token) {
+                        window.open(`http://localhost:3001/?token=${token}`, '_blank')
+                      }
+                    }}
+                    className="w-full bg-gradient-to-r from-rose-500 to-red-600 hover:from-rose-600 hover:to-red-700 text-white font-medium py-2.5 px-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:text-green-200 hover:shadow-green-500/25"
+                  >
+                    เปิดใช้งาน
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Excel Card 2 (Device) */}
+            <div className="group">
+              <div className="bg-neutral-800/50 backdrop-blur-xl border border-neutral-700 rounded-2xl p-4 shadow-xl transform transition-all duration-300 hover:shadow-2xl hover:border-green-500 hover:-translate-y-1">
+                <div className="flex flex-col h-full">
+                  {/* Icon Section */}
+                  <div className="mb-4">
+                    <div className="relative inline-block">
+                      <div className="bg-gradient-to-br from-rose-500 to-red-600 p-3 rounded-xl shadow-lg">
+                        <Image
+                          src="/images/logo/icons8-excel.svg"
+                          alt="Excel Icon"
+                          width={32}
+                          height={32}
+                          className="w-8 h-8"
+                        />
+                      </div>
+                      <span className="absolute -top-2 -right-2 bg-rose-500 text-white text-xs px-2 py-0.5 rounded-full">
+                        New
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Content Section */}
+                  <div className="flex-grow">
+                    <h3 className="text-lg font-light text-white mb-2">Excel Filter & Replace Report</h3>
+                    <p className="text-neutral-400 text-sm mb-4">
+                      ระบบกรองข้อมูล Excel Mazda
+                    </p>
+                  </div>
+
+                  {/* Action Button */}
+                  <button
+                    onClick={() => {
+                      const token = localStorage.getItem('api-token')
+                      if (token) {
+                        window.open(`http://localhost:8501/?token=${token}`, '_blank')
+                      }
+                    }}
+                    className="w-full bg-gradient-to-r from-rose-500 to-red-600 hover:from-rose-600 hover:to-red-700 text-white font-medium py-2.5 px-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:text-green-200 hover:shadow-green-500/25"
+                  >
+                    เปิดใช้งาน
+                  </button>
+                </div>
               </div>
             </div>
           </div>

@@ -154,7 +154,7 @@ export default function LoginForm() {
           <form onSubmit={handleSubmit} className="p-8">
             <div className="mb-6">
               <label className="block text-neutral-300 text-sm font-light mb-3">
-                Token Login
+                💡Token Login 
               </label>
               <div className="relative">
                 <input
@@ -169,7 +169,7 @@ export default function LoginForm() {
                   <div className="w-2 h-2 bg-rose-500 rounded-full animate-pulse"></div>
                 </div>
               </div>
-              <p className="text-xs text-neutral-500 mt-2 animate-fade-in">💡 กรอก Token Login เพื่อความสมบรูณ์ของระบบ</p>
+              {/* <p className="text-xs text-neutral-500 mt-2 animate-fade-in">💡</p> */}
             </div>
 
             <button
