@@ -62,10 +62,10 @@ function MainMenu() {
 
   if (isVerified === null) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 flex items-center justify-center">
+      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-3 border-rose-500 border-t-transparent mx-auto mb-4"></div>
-          <p className="text-neutral-300 text-lg">กำลังตรวจสอบสิทธิ์...</p>
+          <p className="text-gray-300 text-lg">กำลังตรวจสอบสิทธิ์...</p>
         </div>
       </div>
     )
@@ -76,20 +76,14 @@ function MainMenu() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 relative overflow-hidden">
-      {/* Soft Background Elements */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-10 left-10 w-96 h-96 bg-rose-500 rounded-full blur-[150px]"></div>
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-red-500 rounded-full blur-[150px]"></div>
-      </div>
-
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="h-full w-full bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+    <div className="min-h-screen bg-gray-900 relative overflow-hidden">
+      {/* Subtle Pattern Overlay */}
+      <div className="absolute inset-0 bg-black/20">
+        <div className="h-full w-full bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.1),transparent_50%)]"></div>
       </div>
 
       {/* Header */}
-      <header className="relative z-10 bg-neutral-800/50 backdrop-blur-xl border-b border-neutral-700">
+      <header className="relative z-10 bg-gray-800/50 backdrop-blur-xl border-b border-gray-700">
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-4">
@@ -100,19 +94,19 @@ function MainMenu() {
               </div>
               <div>
                 <h1 className="text-xl font-light text-white">Dashboard Menu</h1>
-                <p className="text-neutral-400 text-sm">ระบบจัดการข้อมูล</p>
+                <p className="text-gray-200 text-sm">ระบบจัดการข้อมูล</p>
               </div>
             </div>
 
             <div className="flex items-center space-x-6">
               <div className="text-right">
-                <p className="text-neutral-300 text-sm">{currentTime.toLocaleDateString('th-TH', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                <p className="text-gray-200 text-sm">{currentTime.toLocaleDateString('th-TH', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
                 <p className="text-rose-500 text-xs">{currentTime.toLocaleTimeString('th-TH')}</p>
               </div>
 
               <button
                 onClick={handleLogout}
-                className="bg-neutral-700/50 hover:bg-rose-500 text-neutral-300 hover:text-white px-4 py-2 rounded-xl transition-all duration-300 flex items-center space-x-2 border border-neutral-600 hover:border-neutral-500"
+                className="bg-gray-700/50 hover:bg-rose-500 text-gray-300 hover:text-white px-4 py-2 rounded-xl transition-all duration-300 flex items-center space-x-2 border border-gray-600 hover:border-gray-500"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -125,14 +119,13 @@ function MainMenu() {
       </header>
 
       {/* Main Content */}
-      <main className="relative z-10 container mx-auto px-6 py-12 ">
+      <main className="relative z-10 container mx-auto px-6 py-12">
         {/* Welcome Section */}
-
         <div className="mb-12">
           <h2 className="text-3xl font-light text-white mb-2">
             ยินดีต้อนรับ
           </h2>
-          <p className="text-neutral-400">เลือกเครื่องมือที่ต้องการใช้งาน</p>
+          <p className="text-gray-200">เลือกเครื่องมือที่ต้องการใช้งาน</p>
         </div>
 
         <div className="max-w-10xl">
@@ -140,7 +133,7 @@ function MainMenu() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {/* Excel Card 1 */}
             <div className="group">
-              <div className="bg-neutral-800/50 backdrop-blur-xl border border-neutral-700 rounded-2xl p-4 shadow-xl transform transition-all duration-300 hover:shadow-2xl hover:border-green-500 hover:-translate-y-1">
+              <div className="bg-gray-800/50 backdrop-blur-xl border border-gray-700 rounded-2xl p-4 shadow-xl transform transition-all duration-300 hover:shadow-2xl hover:border-rose-500 hover:-translate-y-1">
                 <div className="flex flex-col h-full">
                   {/* Icon Section */}
                   <div className="mb-4">
@@ -163,7 +156,7 @@ function MainMenu() {
                   {/* Content Section */}
                   <div className="flex-grow">
                     <h3 className="text-lg font-light text-white mb-2">Excel Filter</h3>
-                    <p className="text-neutral-400 text-sm mb-4">
+                    <p className="text-gray-300 text-sm mb-4">
                       ระบบกรองและจัดการข้อมูล Excel อัตโนมัติ
                     </p>
                   </div>
@@ -176,7 +169,7 @@ function MainMenu() {
                         window.open(`http://localhost:3001/?token=${token}`, '_blank')
                       }
                     }}
-                    className="w-full bg-gradient-to-r from-rose-500 to-red-600 hover:from-rose-600 hover:to-red-700 text-white font-medium py-2.5 px-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:text-green-200 hover:shadow-green-500/25"
+                    className="w-full bg-gradient-to-r from-rose-500 to-red-600 hover:from-rose-600 hover:to-red-700 text-white font-medium py-2.5 px-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-rose-500/25"
                   >
                     เปิดใช้งาน
                   </button>
@@ -186,7 +179,7 @@ function MainMenu() {
 
             {/* Excel Card 2 (Device) */}
             <div className="group">
-              <div className="bg-neutral-800/50 backdrop-blur-xl border border-neutral-700 rounded-2xl p-4 shadow-xl transform transition-all duration-300 hover:shadow-2xl hover:border-green-500 hover:-translate-y-1">
+              <div className="bg-gray-800/50 backdrop-blur-xl border border-gray-700 rounded-2xl p-4 shadow-xl transform transition-all duration-300 hover:shadow-2xl hover:border-rose-500 hover:-translate-y-1">
                 <div className="flex flex-col h-full">
                   {/* Icon Section */}
                   <div className="mb-4">
@@ -209,7 +202,7 @@ function MainMenu() {
                   {/* Content Section */}
                   <div className="flex-grow">
                     <h3 className="text-lg font-light text-white mb-2">Excel Filter & Replace Report</h3>
-                    <p className="text-neutral-400 text-sm mb-4">
+                    <p className="text-gray-300 text-sm mb-4">
                       ระบบกรองข้อมูล Excel Mazda
                     </p>
                   </div>
@@ -222,7 +215,7 @@ function MainMenu() {
                         window.open(`http://localhost:8501/?token=${token}`, '_blank')
                       }
                     }}
-                    className="w-full bg-gradient-to-r from-rose-500 to-red-600 hover:from-rose-600 hover:to-red-700 text-white font-medium py-2.5 px-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:text-green-200 hover:shadow-green-500/25"
+                    className="w-full bg-gradient-to-r from-rose-500 to-red-600 hover:from-rose-600 hover:to-red-700 text-white font-medium py-2.5 px-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-rose-500/25"
                   >
                     เปิดใช้งาน
                   </button>

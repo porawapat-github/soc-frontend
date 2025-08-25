@@ -56,7 +56,7 @@ export default function LoginForm() {
   }
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 relative overflow-hidden">
+    <div className="min-h-screen flex justify-center items-center bg-gray-900 relative overflow-hidden">
       {/* Soft Animated Background */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-20 w-64 h-64 bg-rose-500 rounded-full blur-[100px] animate-pulse"></div>
@@ -118,10 +118,10 @@ export default function LoginForm() {
 
       <div className="relative z-10 w-full max-w-md px-6">
         {/* Login Card */}
-        <div className="bg-neutral-800/50 backdrop-blur-xl border border-neutral-700 shadow-2xl rounded-3xl overflow-hidden transform transition-all duration-500 hover:scale-[1.02]">
+        <div className="bg-gray-800/50 backdrop-blur-xl border border-gray-700 shadow-2xl rounded-3xl overflow-hidden transform transition-all duration-500 hover:scale-[1.02]">
           
           {/* Header Section */}
-          <div className="bg-gradient-to-r from-neutral-800 to-neutral-700 p-8 text-center border-b border-neutral-600">
+          <div className="bg-gradient-to-r from-gray-800 to-gray-700 p-8 text-center border-b border-gray-600">
             <div className="flex justify-center mb-4">
               <div className="bg-gradient-to-br from-rose-500 to-red-600 rounded-2xl p-4 shadow-xl transform transition-all duration-300 hover:rotate-12 hover:scale-110">
                 <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -130,7 +130,7 @@ export default function LoginForm() {
               </div>
             </div>
             <h1 className="text-2xl font-light text-white mb-2 animate-fade-in">เข้าสู่ระบบ</h1>
-            <p className="text-neutral-400 text-sm animate-fade-in-delayed">กรุณาใส่ Token เพื่อเข้าใช้งาน</p>
+            <p className="text-white text-sm animate-fade-in-delayed">กรุณาใส่ Token เพื่อเข้าใช้งาน</p>
           </div>
 
           <style>{`
@@ -153,7 +153,7 @@ export default function LoginForm() {
           {/* Form Section */}
           <form onSubmit={handleSubmit} className="p-8">
             <div className="mb-6">
-              <label className="block text-neutral-300 text-sm font-light mb-3">
+              <label className="block text-white text-sm font-light mb-3">
                 💡Token Login 
               </label>
               <div className="relative">
@@ -162,14 +162,13 @@ export default function LoginForm() {
                   placeholder="กรอก Token Login"
                   value={token}
                   onChange={(e) => setToken(e.target.value)}
-                  className="w-full px-4 py-3 bg-neutral-700/50 border border-neutral-600 rounded-xl text-white placeholder-neutral-500 focus:outline-none focus:border-rose-500/50 focus:ring-2 focus:ring-rose-500/20 transition-all duration-300"
+                  className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-xl text-white placeholder-neutral-500 focus:outline-none focus:border-rose-500/50 focus:ring-2 focus:ring-rose-500/20 transition-all duration-300"
                   disabled={isLoading}
                 />
                 <div className="absolute inset-y-0 right-0 flex items-center pr-4">
                   <div className="w-2 h-2 bg-rose-500 rounded-full animate-pulse"></div>
                 </div>
               </div>
-              {/* <p className="text-xs text-neutral-500 mt-2 animate-fade-in">💡</p> */}
             </div>
 
             <button
